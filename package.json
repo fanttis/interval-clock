@@ -1,0 +1,15 @@
+{
+  "name": "interval-clock",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "latest",
+    "run-sequence": "latest",
+    "gulp-uglify": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-ruby-sass": "0.5.0",
+    "gulp-notify": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-concat": "latest",
+    "gulp-jshint": "^1.9.0"
+  }
+}
