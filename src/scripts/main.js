@@ -84,12 +84,18 @@ Clock.main = (function(window, document) {
         }
     }
 
+    function addInterval(){
+        if( typeof totalTime !== 'undefined' && totalTime.state === 1 ){
+            intervalTime.Interval();
+        }
+    }
+
     btn_start_stop.addEventListener( 'click', function(){
         startStopTimer();
     }, false);
 
     btn_interval.addEventListener( 'click', function(){
-        intervalTime.interval();
+        addInterval();
     }, false);
 
     window.addEventListener( 'keyup', function(e){
@@ -99,7 +105,7 @@ Clock.main = (function(window, document) {
             case 73:
                 // Key: Space, I
                 e.preventDefault();
-                intervalTime.Interval();
+                addInterval();
                 break;
             case 13:
             case 83:
