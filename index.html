@@ -7,144 +7,25 @@
     <title>Interval Clock</title>
     <meta name="author" content="Antti Huovinen">
     <meta name="description" content="Timer for intervals which features total time and past intervals log.">
+    <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
     <div class="main-wrapper">
-        <button id="timer-startstop">Start</button>
-        <button id="timer-sprint">Sprint</button>
-        <p id="total-time" class="total-time"><time>00</time>:<time>00</time></p>
-        <h2 id="time" class="time"><time>00</time>:<time>00</time></h2>
-        <ul id="sprints" class="sprints"></ul>
+        <h1>Interval Clock</h1>
+        <div class="button-wrapper">
+            <button id="timer-startstop" tabindex="1">Start</button>
+            <span aria-hidden="true">Keyboard shortcuts: Enter and S</span>
+        </div>
+        <div class="button-wrapper">
+            <button id="timer-interval" tabindex="2">Sprint</button>
+            <span aria-hidden="true">Keyboard shortcuts: Space and I</span>
+        </div>
+        <div class="content-output">
+            <p id="tt" class="time-total"><time>00</time>:<time>00</time></p>
+            <h2 id="time" class="time-now"><time>00</time>:<time>00</time></h2>
+            <ul id="intervals" class="log"></ul>
+        </div>
     </div>
-    <script type="text/javascript" defer>
-        (function() {
-            var time = document.getElementById( 'time' );
-            var tt = document.getElementById( 'total-time' );
-            var sprints = document.getElementById( 'sprints' );
-
-            var btn_start_stop = document.getElementById( 'timer-startstop' );
-            var btn_sprint = document.getElementById( 'timer-sprint' );
-            var btn_reset = document.getElementById( 'timer-reset' );
-
-            /*
-             * #Helper functions
-             */
-            function hasClass(el, cls){
-                return el.className.match(cls) !== null;
-            }
-
-            function addClass(el, cls){
-                el.className += ' '+cls;
-            }
-
-            function removeClass(el, cls){
-                el.className = el.className.replace(cls,' ');
-            }
-
-            function pad ( val ) { return val > 9 ? val : "0" + val; }
-
-            /*
-             * #Timer
-             *  - Start timer
-             *  - Log timer into sprint mark
-             *  - Delete timer
-             */
-
-            function Timer(el){
-                this.el = el;
-                this.state = null;
-                this.clock = null;
-                this.Start();
-            }
-
-            Timer.prototype.Start = function(){
-                var sec = 0;
-                var el = this.el;
-                this.state = 1;
-
-                this.clock = setInterval( function(){
-                    el.getElementsByTagName('time')[0].innerHTML = pad(parseInt(sec/60,10));
-                    el.getElementsByTagName('time')[1].innerHTML = pad(++sec%60);
-                }, 1000);
-            }
-
-            Timer.prototype.Stop = function(){
-                var el = this.el;
-                this.state = 0;
-                clearInterval(this.clock);
-                el.getElementsByTagName('time')[0].innerHTML = '00';
-                el.getElementsByTagName('time')[1].innerHTML = '00';
-            }
-
-            Timer.prototype.Sprint = function(){
-                var log = document.createElement("li");
-                log.appendChild( document.createTextNode( this.el.innerText ) );
-                sprints.appendChild(log);
-                this.Stop();
-                this.Start();
-            }
-
-            var totalTime;
-            var sprintTime;
-
-            function startStopTimer(){
-                if( typeof totalTime === 'undefined' || totalTime.state === 0 ){
-                    sprintTime = new Timer(time);
-                    totalTime = new Timer(tt);
-                    btn_start_stop.innerHTML = 'Stop/Reset';
-                } else {
-                    sprintTime.Stop();
-                    totalTime.Stop();
-                    btn_start_stop.innerHTML = 'Start';
-                    sprints.innerHTML = '';
-                }
-            }
-
-            btn_start_stop.addEventListener( 'click', function(){
-                startStopTimer();
-            }, false);
-
-            btn_sprint.addEventListener( 'click', function(){
-                sprintTime.Sprint();
-            }, false);
-
-            window.addEventListener("keyup", function(e){
-                var k = e.keyCode;
-                switch(k){
-                    case 32:
-                    case 83:
-                        // Key: Space, S
-                        e.preventDefault();
-                        sprintTime.Sprint();
-                        break;
-                    case 13:
-                    case 82:
-                        // Key: Enter, R
-                        startStopTimer();
-                        break;
-                    default:
-                        console.log('Listened keys are: Space (sprint), S (sprint), R (reset) and Enter (reset)');
-                }
-            }, false);
-
-
-
-    /*
-            var type = document.getElementById( 'timer-type' );
-            var selected = null;
-
-            function selectedOption(type){
-                return type.options[type.selectedIndex].value;
-            }
-
-            type.addEventListener('change', function(selected){
-                selected = selectedOption(type);
-            }, false);
-    */
-
-
-        })();
-    </script>
-
+    <script type="text/javascript" src="./assets/scripts/main.min.js" defer></script>
 </body>
 </html>
