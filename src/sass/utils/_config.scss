@@ -5,3 +5,16 @@ $font-alt: "Montserrat", "Helvetica Neue", sans-serif;
 $black      : #000000;
 $white      : #FFFFFF;
 $text-color : rgb(33,33,33);
+$text-light : #B2B2B2;
+$text-medium: #7F7F7F;
+$bc         : $text-medium;
+$red        : #D72323;
+$green      : #12CB50;
+
+
+$btn-small: 3em;
+$btn-large: 4em;
+
+$btn-large-border: $btn-large/30;
+$btn-small-border: $btn-small/30;
+$btn-gap: -$btn-small - ($btn-small-border*2 + $btn-large-border*2);

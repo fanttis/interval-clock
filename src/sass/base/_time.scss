@@ -1,0 +1,41 @@
+time{
+    font-family: $font-alt;
+
+    ul &:before{
+        content: attr(data-order)".";
+        display: inline-block;
+        position: absolute;
+        left: -1.5em;
+        font-family: $font-base;
+    }
+}
+
+.time-total-wrapper{
+    position: absolute;
+    right: 0;
+    top: -1.5em;
+
+    ul,
+    .time-total{
+        padding: 0 1em 0.125em 0.5em;
+    }
+
+    ul{
+        color: $text-light;
+        margin-top: 0.25em;
+    }
+}
+
+.time-total{
+    border-bottom: 1px solid $bc;
+    margin-bottom: 0.125em;
+    color: $text-medium;
+}
+
+.time-now{
+    font-size: 3em;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    margin-bottom: 0.25em;
+}

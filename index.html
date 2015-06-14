@@ -11,20 +11,33 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <h1>Interval Clock</h1>
-        <div class="button-wrapper">
-            <button id="timer-startstop" tabindex="1">Start</button>
-            <span aria-hidden="true">Keyboard: Enter and S</span>
-        </div>
-        <div class="button-wrapper">
-            <button id="timer-interval" tabindex="2">Sprint</button>
-            <span aria-hidden="true">Keyboard: Space and I</span>
-        </div>
-        <div class="content-output">
-            <p id="tt" class="time-total"><time>00</time>:<time>00</time></p>
-            <h2 id="time" class="time-now"><time>00</time>:<time>00</time></h2>
-            <ul id="intervals" class="log"></ul>
-        </div>
+        <header>
+            <div class="container clearfix">
+                <time id="st" class="time-session"><span>00</span>:<span>00</span></time>
+                <h1>Interval Clock</h1>
+            </div>
+        </header>
+        <article>
+            <div class="container">
+                <div class="buttons">
+                    <div class="button-wrapper">
+                        <button id="timer-startstop" tabindex="1">Start</button>
+                        <span aria-hidden="true">Enter / S</span>
+                    </div>
+                    <div class="button-wrapper">
+                        <button id="timer-interval" tabindex="2">Sprint</button>
+                        <span aria-hidden="true">Space / I</span>
+                    </div>
+                </div>
+                <div class="time-total-wrapper">
+                    <time class="time-total" id="rt"><span>00</span>:<span>00</span></time>
+                    <ul>
+                    </ul>
+                </div>
+                <time id="time" class="time-now"><span>00</span>:<span>00</span></time>
+                <ul id="sprint-log" class="log"></ul>
+            </div>
+        </article>
     </div>
     <script type="text/javascript" src="./assets/scripts/main.min.js" defer></script>
 </body>
