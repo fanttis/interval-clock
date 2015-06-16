@@ -48,8 +48,8 @@ Clock.main = (function(window, document) {
     Timer.prototype.Start = function(){
         var sec = 0;
         var el = this.el;
-        this.el.getElementsByTagName('span')[0].innerHTML = '00';
-        this.el.getElementsByTagName('span')[1].innerHTML = '00';
+        el.getElementsByTagName('span')[0].innerHTML = '00';
+        el.getElementsByTagName('span')[1].innerHTML = '00';
         this.state = 1;
 
         this.clock = setInterval( function(){
@@ -67,10 +67,9 @@ Clock.main = (function(window, document) {
         var log_item = document.createElement( 'li');
         var el_time = document.createElement( 'time' );
         var log = this.el.nextSibling.nextSibling;
-
         el_time.dataset.order = this.order;
         this.order += 1;
-        log_item.appendChild( el_time ).appendChild( document.createTextNode( this.el.innerText ) );
+        log_item.appendChild( el_time ).appendChild( document.createTextNode( this.el.textContent ) );
         log.insertBefore(log_item, log.firstChild);
 
         if( this.state === 1 ){
